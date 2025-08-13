@@ -2,121 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>NERD — The Smartest Dumb Memecoin 🤓</title>
 <style>
-  /* ==== Reset / base ==== */
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    margin: 0; font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
-    color: #e8ecff; background: #0a0b12; overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  /* ==== Background eye candy ==== */
-  .bg {
-    position: fixed; inset: -10vmax; z-index: -2; filter: blur(50px) saturate(130%);
-    background:
-      radial-gradient(50% 50% at 20% 20%, rgba(124,58,237,.35) 0%, rgba(30,27,75,0) 60%),
-      radial-gradient(60% 60% at 80% 30%, rgba(34,211,238,.30) 0%, rgba(2,6,23,0) 60%),
-      radial-gradient(70% 70% at 50% 90%, rgba(34,197,94,.22) 0%, rgba(2,6,23,0) 70%),
-      #0a0b12;
-    animation: float 22s ease-in-out infinite alternate;
-  }
-  @keyframes float { to { transform: translate3d(3vmax,-2vmax,0) scale(1.02); } }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:#e8ecff;background:#0a0b12;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
 
-  /* ==== Layout ==== */
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
-  header {
-    display: flex; align-items: center; gap: 16px; padding: 16px 0 8px;
-    position: sticky; top: 0; backdrop-filter: blur(8px);
-  }
-  .logo {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffe082, #ffb300 60%, #a05a00);
-    box-shadow: 0 0 0 3px rgba(255,255,255,.08), 0 8px 30px rgba(0,0,0,.4);
-    position: relative; flex: 0 0 auto;
-  }
-  .logo:before, .logo:after {
-    content:""; position: absolute; top: 12px; width: 11px; height: 11px; border: 3px solid #3b82f6; border-radius: 3px;
-    background: #0a0b12; transform: rotate(8deg);
-  }
-  .logo:before { left: 6px; }
-  .logo:after  { right: 6px; transform: rotate(-6deg); }
-  .brand { font-weight: 800; letter-spacing: .5px; font-size: 20px; display: flex; align-items: center; gap: 8px; }
-  .pill { font-size: 12px; padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,.06); }
+  .bg{position:fixed;inset:-10vmax;z-index:-2;filter:blur(50px) saturate(130%);
+    background:radial-gradient(50% 50% at 20% 20%, rgba(124,58,237,.35) 0%, rgba(30,27,75,0) 60%),
+               radial-gradient(60% 60% at 80% 30%, rgba(34,211,238,.30) 0%, rgba(2,6,23,0) 60%),
+               radial-gradient(70% 70% at 50% 90%, rgba(34,197,94,.22) 0%, rgba(2,6,23,0) 70%), #0a0b12;
+    animation:float 22s ease-in-out infinite alternate}
+  @keyframes float{to{transform:translate3d(3vmax,-2vmax,0) scale(1.02)}}
 
-  nav { margin-left: auto; display: flex; gap: 16px; font-weight: 600; }
-  nav a { opacity: .9; }
-  nav a:hover { opacity: 1; text-shadow: 0 0 12px rgba(124,58,237,.6); }
+  .wrap{max-width:1100px;margin:0 auto;padding:24px}
+  header{display:flex;align-items:center;gap:12px;padding:16px 0 8px;position:sticky;top:0;backdrop-filter:blur(8px)}
+  .logo{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffe082,#ffb300 60%,#a05a00);box-shadow:0 0 0 3px rgba(255,255,255,.08),0 8px 30px rgba(0,0,0,.4);position:relative;flex:0 0 auto}
+  .logo:before,.logo:after{content:"";position:absolute;top:12px;width:11px;height:11px;border:3px solid #3b82f6;border-radius:3px;background:#0a0b12;transform:rotate(8deg)}
+  .logo:before{left:6px}.logo:after{right:6px;transform:rotate(-6deg)}
+  .brand{font-weight:800;letter-spacing:.5px;font-size:20px;display:flex;align-items:center;gap:8px}
+  .pill{font-size:12px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.06)}
+  nav{margin-left:auto;display:flex;gap:16px;font-weight:600}
+  nav a{opacity:.9}nav a:hover{opacity:1;text-shadow:0 0 12px rgba(124,58,237,.6)}
 
-  /* ==== Hero ==== */
-  .hero {
-    margin: 28px 0 8px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px;
-  }
-  @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
-  .card {
-    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-    border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 22px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
-  }
-  h1 {
-    font-size: clamp(34px, 4.2vw, 64px); line-height: 1.03; margin: 8px 0 10px;
-    background: linear-gradient(90deg, #e8ecff, #a5b4fc 50%, #7c3aed);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    text-shadow: 0 0 24px rgba(124,58,237,.25);
-  }
-  .lead { font-size: 18px; opacity: .92; }
+  .hero{margin:28px 0 8px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+  @media (max-width:900px){.hero{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.04)}
+  h1{font-size:clamp(32px,4.6vw,60px);line-height:1.05;margin:8px 0 10px;background:linear-gradient(90deg,#e8ecff,#a5b4fc 50%,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 24px rgba(124,58,237,.25)}
+  .lead{font-size:18px;opacity:.92}
 
-  /* ==== Contract copy section ==== */
-  .contract {
-    margin-top: 18px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+  .contract{margin-top:18px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+  .contract code,.contract input{
+    display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:14px 14px;border-radius:12px;background:rgba(2,6,23,.6);border:1px dashed rgba(148,163,184,.35);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px
   }
-  .contract code {
-    display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 12px 14px;
-    border-radius: 12px; background: rgba(2,6,23,.6); border: 1px dashed rgba(148,163,184,.35); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  }
-  .btn {
-    appearance: none; border: 0; cursor: pointer; font-weight: 800; letter-spacing: .3px;
-    padding: 12px 16px; border-radius: 12px;
-    background: linear-gradient(135deg, #7c3aed, #22d3ee);
-    color: #0b0f1a; box-shadow: 0 10px 25px rgba(34,211,238,.25), inset 0 -2px 0 rgba(0,0,0,.15);
-  }
-  .btn:disabled { filter: grayscale(.5) brightness(.8); cursor: not-allowed; }
-  .status { font-size: 13px; opacity: .9; min-height: 1em; }
+  .contract input{width:100%;color:#e8ecff}
+  .btn{appearance:none;border:0;cursor:pointer;font-weight:800;letter-spacing:.3px;padding:14px 16px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#22d3ee);color:#0b0f1a;box-shadow:0 10px 25px rgba(34,211,238,.25),inset 0 -2px 0 rgba(0,0,0,.15)}
+  .btn:disabled{filter:grayscale(.5) brightness(.85);cursor:not-allowed}
+  .status{font-size:14px;opacity:.95;min-height:1em}
 
-  /* ==== Grid cards ==== */
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0; }
-  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
-  .card h3 { margin: 6px 0 8px; font-size: 20px; }
-  .muted { color: #b9c0d5; }
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .card h3{margin:6px 0 8px;font-size:20px}
+  .muted{color:#b9c0d5}
 
-  /* ==== Manual copy modal ==== */
-  .modal {
-    position: fixed; inset: 0; display: grid; place-items: center; padding: 24px;
-    background: rgba(0,0,0,.55);
-  }
-  .modal[hidden] { display: none; }
-  .modal .box {
-    width: min(700px, 92vw); border-radius: 16px; padding: 18px;
-    background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
-    border: 1px solid rgba(255,255,255,.12);
-  }
-  .modal textarea {
-    width: 100%; height: 120px; border-radius: 10px; border: 1px solid rgba(255,255,255,.15);
-    background: rgba(2,6,23,.7); color: #e8ecff; padding: 10px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px;
-  }
+  .modal{position:fixed;inset:0;display:grid;place-items:center;padding:24px;background:rgba(0,0,0,.55)}
+  .modal[hidden]{display:none}
+  .modal .box{width:min(700px,92vw);border-radius:16px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12)}
+  .modal textarea{width:100%;height:120px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(2,6,23,.7);color:#e8ecff;padding:10px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px}
 
-  /* ==== Footer & tests ==== */
-  .foot { display: flex; gap: 12px; justify-content: space-between; align-items: center; padding: 24px 0 36px; }
-  .tests { font-size: 14px; }
-  .tests .ok { color: #22c55e; }
-  .tests .bad { color: #ef4444; }
+  .foot{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:24px 0 36px}
+  .tests{font-size:14px}.tests .ok{color:#22c55e}.tests .bad{color:#ef4444}
+
+  /* Bigger tap targets on mobile */
+  @media (hover:none){ .btn{padding:16px 18px} }
 </style>
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
-
 <div class="wrap">
   <header>
     <div class="logo" aria-hidden="true"></div>
@@ -134,13 +78,12 @@
       <h1>Smarter than your bag, dumber than your thesis.</h1>
       <p class="lead">NERD is the coin for people who correct your grammar and still buy the top. We learn fast, we meme faster.</p>
 
+      <!-- MOBILE-FRIENDLY CONTRACT: input is focusable & allows long‑press copy on iOS -->
       <div class="contract" aria-live="polite">
-        <code id="contractText" title="Contract address">0xDEADbeefDEADbeefDEADbeefDEADbeefDEADbEEF</code>
-        <button id="copyBtn" class="btn">Copy Contract</button>
-        <div id="copyStatus" class="status muted"></div>
+        <input id="contractInput" value="0xDEADbeefDEADbeefDEADbeefDEADbeefDEADbEEF" readonly inputmode="text" aria-label="Contract address" />
+        <button id="copyBtn" class="btn" aria-describedby="copyHint">Copy</button>
+        <div id="copyStatus" class="status muted" role="status"><span id="copyHint">Tip: tap the address to select, long‑press to copy on iPhone.</span></div>
       </div>
-
-      <p class="muted" style="margin-top:8px">If your browser blocks clipboard access, we’ll pop a box with the contract selected so you can press <b>Ctrl/Cmd + C</b>.</p>
     </div>
 
     <div class="card" id="buy">
@@ -150,38 +93,19 @@
         <li>Bridge some funds to the chain of your choice.</li>
         <li>Paste the contract, set slippage to “genius”, and mash buy.</li>
       </ol>
-      <div style="margin-top:10px">
-        <a class="btn" href="#" aria-disabled="true">DEX (soon™)</a>
-      </div>
+      <div style="margin-top:10px"><a class="btn" href="#" aria-disabled="true">DEX</a></div>
     </div>
   </section>
 
   <section class="grid" id="tokenomics">
-    <div class="card">
-      <h3>Tokenomics</h3>
-      <p class="muted">10% air, 40% vibes, 50% community. No taxes, no VCs, just peer‑reviewed memes.</p>
-    </div>
-    <div class="card">
-      <h3>Roadmap</h3>
-      <ul class="muted" id="roadmap">
-        <li>Q1 — Launch site, argue on Twitter.</li>
-        <li>Q2 — Sticker packs & nerd glasses filter.</li>
-        <li>Q3 — Publish “Whitepaper in Comic Sans”.</li>
-        <li>Q4 — DAO votes on pizza toppings.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Ticker</h3>
-      <p class="muted">$NERD — because $GIGA_BRAIN was taken.</p>
-    </div>
+    <div class="card"><h3>Tokenomics</h3><p class="muted">10% air, 40% vibes, 50% community. No taxes, no VCs, just peer‑reviewed memes.</p></div>
+    <div class="card"><h3>Roadmap</h3><ul class="muted" id="roadmap"><li>Q1 — Launch site, argue on Twitter.</li><li>Q2 — Sticker packs & nerd glasses filter.</li><li>Q3 — Publish “Whitepaper in Comic Sans”.</li><li>Q4 — DAO votes on pizza toppings.</li></ul></div>
+    <div class="card"><h3>Ticker</h3><p class="muted">$NERD — because $GIGA_BRAIN was taken.</p></div>
   </section>
 
   <footer class="foot">
     <div class="muted">© 2025 NERD. Not financial advice; definitely comedy.</div>
-    <div class="tests">
-      <strong>Self‑tests:</strong>
-      <span id="testSummary" class="muted">running…</span>
-    </div>
+    <div class="tests"><strong>Self‑tests:</strong> <span id="testSummary" class="muted">running…</span></div>
   </footer>
 </div>
 
@@ -189,136 +113,108 @@
 <div id="manualCopy" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="manualTitle">
   <div class="box">
     <h3 id="manualTitle">Clipboard blocked</h3>
-    <p class="muted">Press <b>Ctrl/Cmd + C</b> to copy the contract below. We selected it for you.</p>
+    <p class="muted">Press <b>Ctrl/Cmd + C</b> (or use your OS share/copy menu) to copy the contract below. It’s already selected.</p>
     <textarea id="manualText" readonly></textarea>
-    <div style="display:flex; gap:10px; margin-top:10px; justify-content:flex-end;">
-      <button class="btn" id="closeManual">Done</button>
-    </div>
+    <div style="display:flex;gap:10px;margin-top:10px;justify-content:flex-end"><button class="btn" id="closeManual">Done</button></div>
   </div>
 </div>
 
 <script>
-/* ==================== Robust copy util ==================== */
-async function safeCopyText(text) {
-  // 1) Try Clipboard API (best path; requires user gesture & permission)
-  if (navigator.clipboard && window.isSecureContext) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return 'clipboard';
-    } catch (e) {
-      // fall through
-    }
-  }
+/* === Mobile‑robust, permission‑aware copy === */
+const IS_IOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const contractInput = document.getElementById('contractInput');
+const copyBtn = document.getElementById('copyBtn');
+const copyStatus = document.getElementById('copyStatus');
+const modal = document.getElementById('manualCopy');
+const manualText = document.getElementById('manualText');
+const closeManual = document.getElementById('closeManual');
 
-  // 2) Try execCommand fallback (works in many old/restricted contexts)
-  try {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.setAttribute('readonly', '');
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    ta.style.pointerEvents = 'none';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    ta.setSelectionRange(0, ta.value.length); // iOS
-    const ok = document.execCommand('copy');
-    document.body.removeChild(ta);
-    if (ok) return 'execCommand';
-  } catch (e) {
-    // ignore and continue
-  }
+function vibrate(ms=25){ if (navigator.vibrate) try{ navigator.vibrate(ms); }catch(_){} }
 
-  // 3) Manual path: open modal and preselect
-  const modal = document.getElementById('manualCopy');
-  const area  = document.getElementById('manualText');
-  modal.hidden = false;
-  area.value = text;
-  setTimeout(() => { area.focus(); area.select(); }, 0);
-  return 'manual';
+function selectInput(el){
+  el.removeAttribute('disabled');
+  el.focus({preventScroll:true});
+  el.select();
+  // iOS requires range explicitly
+  try{ el.setSelectionRange(0, el.value.length); }catch(_){/* noop */}
 }
 
-/* ==================== Wire up UI ==================== */
-(function initCopy() {
-  const btn = document.getElementById('copyBtn');
-  const status = document.getElementById('copyStatus');
-  const contract = document.getElementById('contractText').textContent.trim();
-  const modal = document.getElementById('manualCopy');
-  const doneBtn = document.getElementById('closeManual');
+async function tryClipboardAPI(text){
+  if (!(navigator.clipboard && window.isSecureContext)) throw new Error('no-clipboard');
+  // Must be in user gesture (we are: button/touch handlers)
+  await navigator.clipboard.writeText(text);
+  return true;
+}
 
-  btn.addEventListener('click', async () => {
-    btn.disabled = true; status.textContent = 'Copying…';
-    const method = await safeCopyText(contract);
-    btn.disabled = false;
+function tryExecCommand(text){
+  try{
+    const ta=document.createElement('textarea');
+    ta.value=text; ta.setAttribute('readonly','');
+    ta.style.position='fixed'; ta.style.opacity='0'; ta.style.pointerEvents='none';
+    document.body.appendChild(ta); selectInput(ta);
+    const ok=document.execCommand('copy');
+    document.body.removeChild(ta);
+    return !!ok;
+  }catch(e){return false}
+}
 
-    if (method === 'clipboard' || method === 'execCommand') {
-      status.textContent = 'Copied!';
-      status.classList.remove('muted');
-      setTimeout(() => { status.textContent = ''; status.classList.add('muted'); }, 1800);
-    } else {
-      status.textContent = 'Clipboard blocked. Press Ctrl/Cmd + C.';
-    }
-  });
+function openManual(text){
+  modal.hidden=false; manualText.value=text; setTimeout(()=>{manualText.focus(); manualText.select();},0);
+}
 
-  doneBtn.addEventListener('click', () => { modal.hidden = true; });
-  modal.addEventListener('click', (e) => { if (e.target === modal) modal.hidden = true; });
-})();
+async function safeCopy(text){
+  // 1) iOS best path: select visible input, then execCommand (API is flaky there)
+  if(IS_IOS){
+    selectInput(contractInput);
+    if(document.execCommand && document.execCommand('copy')) return 'execCommand';
+    openManual(text); return 'manual';
+  }
+  // 2) Try Clipboard API
+  try{ await tryClipboardAPI(text); return 'clipboard'; }catch(_){/* fallthrough */}
+  // 3) Fallback to execCommand
+  if(tryExecCommand(text)) return 'execCommand';
+  // 4) Manual
+  openManual(text); return 'manual';
+}
 
-/* ==================== Minimal tests (no external libs) ==================== */
-/**
- * We verify three scenarios:
- *  1) Clipboard API works.
- *  2) Clipboard API denied -> execCommand works.
- *  3) Both blocked -> manual fallback.
- * Tests render a short summary in the footer and log details to console.
- */
-(function runTests() {
-  const results = [];
-  const push = (name, pass, note='') => {
-    results.push({ name, pass, note });
-    console[pass ? 'log' : 'error']((pass ? '✅' : '❌') + ' ' + name + (note ? ' — ' + note : ''));
-  };
+function setStatus(msg, ok=true){
+  copyStatus.textContent=msg; copyStatus.classList.remove('muted');
+  if(ok){ vibrate(15); setTimeout(()=>{copyStatus.textContent=''; copyStatus.classList.add('muted');},1800) }
+}
 
-  const summaryEl = document.getElementById('testSummary');
+copyBtn.addEventListener('click', async ()=>{
+  copyBtn.disabled=true; setStatus('Copying…', false);
+  const text=contractInput.value.trim();
+  const mode=await safeCopy(text);
+  copyBtn.disabled=false;
+  if(mode==='manual') setStatus('Clipboard blocked. Use system copy.', false);
+  else setStatus('Copied!');
+});
 
-  // Save originals to restore after each test
-  const origClipboard = navigator.clipboard;
-  const origExec = document.execCommand;
+// Mobile UX: tap address selects text; long‑press copies (400ms)
+contractInput.addEventListener('click', ()=> selectInput(contractInput));
+let lpTimer=null;
+contractInput.addEventListener('touchstart', ()=>{ selectInput(contractInput); lpTimer=setTimeout(()=>copyBtn.click(), 420) }, {passive:true});
+contractInput.addEventListener('touchend', ()=> clearTimeout(lpTimer));
 
-  // Helper to reset environment between tests
-  const reset = () => {
-    navigator.clipboard = origClipboard;
-    document.execCommand = origExec;
-    const modal = document.getElementById('manualCopy');
-    modal.hidden = true;
-  };
+closeManual.addEventListener('click', ()=> modal.hidden=true);
+modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.hidden=true });
 
-  // Test 1: Clipboard path
-  (async () => {
-    navigator.clipboard = { writeText: async () => { /* ok */ } };
-    const mode = await safeCopyText('abc');
-    push('uses Clipboard API when available', mode === 'clipboard');
-    reset();
-
-    // Test 2: Clipboard blocked -> execCommand
-    navigator.clipboard = { writeText: async () => { throw new Error('NotAllowedError'); } };
-    document.execCommand = () => true;
-    const mode2 = await safeCopyText('abc');
-    push('falls back to execCommand when clipboard is blocked', mode2 === 'execCommand');
-    reset();
-
-    // Test 3: Both blocked -> manual
-    navigator.clipboard = { writeText: async () => { throw new Error('NotAllowedError'); } };
-    document.execCommand = () => false;
-    const mode3 = await safeCopyText('abc');
-    push('falls back to manual selection when both methods blocked', mode3 === 'manual');
-    reset();
-
-    // Render summary
-    const passed = results.filter(r => r.pass).length;
-    summaryEl.innerHTML = passed === results.length
-      ? `<span class="ok">${passed}/${results.length} passed</span>`
-      : `<span class="bad">${passed}/${results.length} passed</span>`;
+/* === Minimal, inline tests (desktop only; mobile safe) === */
+(function runTests(){
+  const results=[]; const push=(n,p)=>results.push({n,p});
+  const origClipboard=navigator.clipboard; const origExec=document.execCommand;
+  const reset=()=>{navigator.clipboard=origClipboard; document.execCommand=origExec; modal.hidden=true};
+  const summary=document.getElementById('testSummary');
+  (async()=>{
+    // Skip mocking on iOS Safari to avoid permission popups
+    const isiOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    if(!isiOS){
+      navigator.clipboard={writeText:async()=>{}}; let mode=await safeCopy('a'); push('Clipboard API path', mode==='clipboard'); reset();
+      navigator.clipboard={writeText:async()=>{throw new Error('denied')}}; document.execCommand=()=>true; mode=await safeCopy('a'); push('execCommand fallback', mode==='execCommand'); reset();
+      navigator.clipboard={writeText:async()=>{throw new Error('denied')}}; document.execCommand=()=>false; mode=await safeCopy('a'); push('manual fallback', mode==='manual'); reset();
+    } else { push('Mobile tests skipped', true) }
+    const pass=results.filter(r=>r.p).length; summary.innerHTML= pass===results.length?`<span class="ok">${pass}/${results.length} passed</span>`:`<span class="bad">${pass}/${results.length} passed</span>`;
   })();
 })();
 </script>
